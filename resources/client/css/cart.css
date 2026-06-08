@@ -1,17 +1,27 @@
-.input-address{
+/* Modern Cart Styling */
+
+/* General Styling */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input-address {
     height: 30px !important;
-  }
-  .fa-times-circle{
-    font-size: 24px;
-  }
-  .table-cart{
-    border-collapse: separate !important;
-  }
-  .table-cart  tr td{
-    vertical-align: middle !important;
-    text-align: center !important;
-  }
-  .btn-a{
+}
+
+/* Form Styling */
+input[name="quantity"] {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+input[name="quantity"]:focus {
+    outline: none;
+    border-color: #ff6b35 !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+/* Button Styling */
+.btn-a {
     background: #fff;
     padding: 10px 20px;
     border: 1px solid #cccccc;
@@ -19,44 +29,119 @@
     -webkit-border-radius: 10px;
     border-radius: 10px;
     outline: none;
-  }
-  .btn-a:hover{
-    background: #f7544a;
-    color: #fff;
-    transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
-  }
+}
 
-  .shopping-cart{
+.btn-a:hover {
+    background: #ff6b35;
+    color: #fff;
+    transition: all 300ms cubic-bezier(0.25, 0.25, 0.75, 0.75);
+}
+
+/* Container */
+.shopping-cart {
     min-height: calc(100vh - 382px);
-  }
-  .container_fullwidth{
-    padding-bottom: 0px !important; 
-  }
-  .title {
+}
+
+.container_fullwidth {
+    padding-bottom: 0px !important;
+}
+
+/* Typography */
+.title {
     font-weight: 600;
-  }
-  .badge-success{
+}
+
+/* Badges */
+.badge-success {
     background-color: #28a745 !important;
-  }
-  .badge-warning {
+}
+
+.badge-warning {
     color: #212529 !important;
     background-color: #ffc107 !important;
-  }
-  .badge-info {
+}
+
+.badge-info {
     color: #fff !important;
     background-color: #17a2b8 !important;
-  }
+}
 
-  .badge-danger {
+.badge-danger {
     color: #fff !important;
     background-color: #dc3545 !important;
-  }
-  
-  .table-cart thead tr th{
-    font-size: 14px !important;
-    font-weight: 600;
-  }
+}
 
-  .table-cart tbody td{
-    font-size: 13px !important;
-  }
+/* Cart Items Responsive */
+@media (max-width: 768px) {
+    .col-md-8,
+    .col-md-4 {
+        margin-bottom: 20px;
+    }
+
+    div[style*="flex"] {
+        flex-direction: column !important;
+    }
+
+    div[style*="flex: 0 0 300px"] {
+        flex: 1 !important;
+        width: 100% !important;
+        margin-top: 15px;
+        margin-left: 0 !important;
+        gap: 10px;
+    }
+
+    div[style*="flex: 0 0 120px"] {
+        flex: 1 !important;
+        margin-right: 0 !important;
+        margin-bottom: 15px;
+    }
+}
+
+/* Sticky Position Fallback */
+@supports not (position: sticky) {
+    .col-md-4 > div {
+        position: relative;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+div[style*="background: white; border-radius: 8px"] {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Hover Effects */
+button[type="submit"] {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #e55a2b !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Link Styling */
+a {
+    transition: color 0.3s ease;
+}
+
+/* Empty State */
+i.fas.fa-shopping-cart {
+    transition: all 0.3s ease;
+}
