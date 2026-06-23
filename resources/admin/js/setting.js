@@ -1,2 +1,2 @@
-$('#notification').summernote()
-$('#introduction').summernote()
+$("#notification").summernote();
+$("#introduction").summernote();
