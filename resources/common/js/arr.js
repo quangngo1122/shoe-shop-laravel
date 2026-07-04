@@ -1,5 +1,4 @@
-class Arr
-{
+class Arr {
     /**
      * Determine whether the given value is array accessible.
      *
@@ -18,11 +17,11 @@ class Arr
      * @return bool
      */
     static exist(data, key) {
-        if (typeof(key) === "undefined" && key === null) {
+        if (typeof key === "undefined" && key === null) {
             return false;
         }
-        
-        if (! isNaN(key)){
+
+        if (!isNaN(key)) {
             key.toString();
         }
 
@@ -36,7 +35,7 @@ class Arr
      * @return {mixed} mixed
      */
     static get(data, key) {
-        if (! Arr.accessible(data)) {
+        if (!Arr.accessible(data)) {
             throw new Error("Data must be of array or object type");
         }
         if (Arr.exist(data, key)) {
@@ -47,13 +46,13 @@ class Arr
             throw new Error("Key not found");
         }
 
-        key.split('.').forEach(value=>{
+        key.split(".").forEach((value) => {
             if (Arr.accessible(data) && Arr.exist(data, value)) {
                 data = data[value];
             } else {
                 throw new Error("Key not found");
             }
-        })
+        });
 
         return data;
     }

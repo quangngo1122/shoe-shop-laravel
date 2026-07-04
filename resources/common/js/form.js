@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function () {
     const rules = $("#form-data").data("rules");
     const messages = $("#form-data").data("messages");
 
@@ -18,24 +18,24 @@ $(document).ready(function(){
     $("#form__js").validate({
         rules: rules ?? "",
         messages: messages ?? "",
-        errorElement: 'span',
+        errorElement: "span",
         errorPlacement: function (error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
+            error.addClass("invalid-feedback");
+            element.closest(".form-group").append(error);
         },
         submitHandler: (form) => {
             form.submit();
-            $('#loading__js').css('display', 'flex');
+            $("#loading__js").css("display", "flex");
         },
     });
 
     // Add name file to input file
-    $(document).on('change', '.inputFile__js', function(){
-        let nameFile = String($('.inputFile__js').val());
-        if (nameFile == '' || nameFile == null) {
-            $('.custom-file-label').text('Chọn hình ảnh');
+    $(document).on("change", ".inputFile__js", function () {
+        let nameFile = String($(".inputFile__js").val());
+        if (nameFile == "" || nameFile == null) {
+            $(".custom-file-label").text("Chọn hình ảnh");
         } else {
-            $('.custom-file-label').text(nameFile.split('\\')[2]);
+            $(".custom-file-label").text(nameFile.split("\\")[2]);
         }
     });
 });

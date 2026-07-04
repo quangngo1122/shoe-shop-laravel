@@ -6,17 +6,33 @@
     font-family: 'Source Sans Pro', sans-serif;
   }
 
-  .bodylogin {
-    min-height: 100vh;
+  .card-outline{
+    background-image: linear-gradient(135deg, rgb(30, 206, 255), rgb(168, 217, 255));
+  }
+  .bodylogin{
+    width: 100vw;
+    height:100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 24px;
-    background-image: linear-gradient(120deg, rgba(2, 44, 75, 0.78), rgba(10, 99, 143, 0.7)), url('{{ asset('asset/client/images/bg.jpg') }}');
+    background-image: url('../asset/client/images/bg.jpg');
+    background-size: 100%;
     background-size: cover;
-    background-position: center;
   }
-
+  .login-box{
+    width: 460px;
+  }
+  .card-body{
+    margin:30px 0px;
+  }
+  .login-box-msg{
+    margin-bottom:20px;
+  }
+  .card-header{
+    background: linear-gradient(to right, black 0%, blue 90%);
+    background-clip: text;
+    color: transparent;
+  }
   .login-box {
     width: min(100%, 460px);
   }
@@ -186,3 +202,4 @@
 
 @vite(['resources/common/js/login.js'])
 @endsection
+

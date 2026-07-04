@@ -1,6 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function () {
     //validation login
-    $('#login-form__js').validate({
+    $("#login-form__js").validate({
         rules: {
             email: {
                 required: true,
@@ -19,15 +19,15 @@ $(document).ready(function(){
                 required: "Vui lòng nhập mật khẩu",
             },
         },
-        errorElement: 'span',
+        errorElement: "span",
         errorPlacement: function (error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
+            error.addClass("invalid-feedback");
+            element.closest(".form-group").append(error);
         },
-    })
+    });
 
     // Display loading when submit login
-    $(document).on('submit', '#login-form__js', function(){
-        $('#loading__js').css('display', 'flex');
+    $(document).on("submit", "#login-form__js", function () {
+        $("#loading__js").css("display", "flex");
     });
 });
