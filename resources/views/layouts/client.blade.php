@@ -90,6 +90,10 @@
   .nav li a:hover{
    color:black;
   }
+
+  @media (max-width: 768px) {
+
+  }
   </style>
    <body id="home">
       <div class="wrapper">

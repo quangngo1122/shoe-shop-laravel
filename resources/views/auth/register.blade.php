@@ -1,51 +1,5 @@
 @extends('layouts.client')
 @section('content-client')
-<style>
-  .register-page {
-    padding: 48px 0;
-    min-height: calc(100vh - 260px);
-    background: linear-gradient(180deg, #f6fbff 0%, #ffffff 100%);
-  }
-  .register-card {
-    max-width: 920px;
-    margin: 0 auto;
-    background: #ffffff;
-    border-radius: 14px;
-    box-shadow: 0 10px 30px rgba(16,24,40,0.08);
-    overflow: hidden;
-    display: flex;
-    gap: 0;
-  }
-  .register-aside {
-    flex: 1 1 320px;
-    background: linear-gradient(135deg,#4f46e5,#06b6d4);
-    color: #fff;
-    padding: 36px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    gap:12px;
-  }
-  .register-aside h2 { margin:0; font-size:20px }
-  .register-aside p { margin:0; opacity:0.95; line-height:1.4 }
-  .register-form-wrap { flex: 1 1 520px; padding: 28px 36px }
-  .register-title { font-size:22px; margin-bottom:6px; font-weight:400 }
-  .register-subtitle { color:#6b7280; margin-bottom:18px }
-  .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px }
-  .form-row { margin-bottom:12px }
-  label.field-label { display:block; font-weight:600; margin-bottom:6px }
-  .required { color:#ef4444; margin-left:6px }
-  .form-control { margin-left:0;width:100%; padding:5px 6px; border:1px solid #e6e9ef; border-radius:10px }
-  .form-control:focus { outline:none; box-shadow:0 6px 20px rgba(99,102,241,0.12); border-color:#6366f1 }
-  .invalid-feedback { display:block; color:#dc2626; margin-top:6px; font-size:13px }
-  .submit-row { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:18px }
-  .btn-primary { background:linear-gradient(90deg,#6366f1,#06b6d4); color:#fff; border:none; padding:12px 18px; border-radius:10px; font-weight:700 }
-  .link-muted { color:#6b7280; text-decoration:none }
-  @media (max-width:900px) {
-    .register-card { flex-direction:column }
-    .form-grid { grid-template-columns:1fr }
-  }
-</style>
 
 <div class="container_fullwidth register-page">
   <div class="container">
