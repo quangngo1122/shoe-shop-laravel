@@ -30,6 +30,12 @@
                             </div>
                         @endif
 
+                        @if (session('warning'))
+                            <div class="verify-card__alert text-center" style="background: #fff3cd; color: #856404; border: 1px solid #ffeeba; margin-top: 12px;">
+                                {{ session('warning') }}
+                            </div>
+                        @endif
+
                         <p class="verify-card__note text-center">
                             Nếu bạn không thấy email trong hộp thư đến, hãy kiểm tra thư rác hoặc thư quảng cáo.
                         </p>

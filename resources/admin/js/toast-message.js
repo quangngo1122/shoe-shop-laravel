@@ -24,10 +24,13 @@ function toast() {
 function fire(toast, type, message) {
     let background;
     let icon;
-    if (type == "success") {
+    if (type === "success") {
         background = "rgba(40,167,69,.85)";
         icon = "success";
-    } else if (type == "error") {
+    } else if (type === "warning") {
+        background = "rgba(255,193,7,.9)";
+        icon = "warning";
+    } else if (type === "error") {
         background = "rgba(220,53,69,.85)";
         icon = "error";
     }

@@ -264,6 +264,8 @@
       </div>
       @if (Session::has('success'))
         <span id="toast__js" message="{{ session('success') }}" type="success"></span>
+      @elseif (Session::has('warning'))
+         <span id="toast__js" message="{{ session('warning') }}" type="warning"></span>
       @elseif (Session::has('error'))
          <span id="toast__js" message="{{ session('error') }}" type="error"></span>
       @endif

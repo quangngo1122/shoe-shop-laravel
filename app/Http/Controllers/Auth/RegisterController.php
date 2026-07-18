@@ -225,14 +225,32 @@ class RegisterController extends Controller
                     'expires_at' => Carbon::now()->addMinutes($time),
                 ]
             );
-            // gửi mail cho người dùng khác thực tài khoản
-            $user->notify(new VerifyUserRegister($token));
+
+            $emailSent = true;
+            try {
+                // gửi mail cho người dùng khác thực tài khoản
+                $user->notify(new VerifyUserRegister($token));
+            } catch (Exception $e) {
+                $emailSent = false;
+                Log::warning('Không thể gửi email xác nhận đăng ký', [
+                    'user_id' => $user->id,
+                    'email' => $user->email,
+                    'error' => $e->getMessage(),
+                ]);
+            }
+
             //thêm địa của khách hàng vào trong csdl
             $addressData['user_id'] = $user->id;
             $this->addressRepository->updateOrCreate($addressData);
             DB::commit();
+
+            $message = $emailSent
+                ? 'Vui lòng kiểm tra email để xác thực tài khoản.'
+                : 'Tài khoản đã được tạo, nhưng email xác nhận chưa gửi được. Bạn có thể gửi lại từ màn hình tiếp theo.';
+
             // chuyển hướng người dùng đến trang thông báo xác thực tài khoản
-            return redirect()->route('user.verification.notice', $user->id);
+            return redirect()->route('user.verification.notice', $user->id)
+                ->with($emailSent ? 'success' : 'warning', $message);
         } catch (Exception $e) {
             // khi có lỗi xảy ra thì xóa bỏ dữ thêm vào database trước đó
             Log::error($e);
@@ -274,7 +292,19 @@ class RegisterController extends Controller
                     'expires_at' => Carbon::now()->addMinutes($time),
                 ]
             );
-            $user->notify(new VerifyUserRegister($token));
+
+            try {
+                $user->notify(new VerifyUserRegister($token));
+            } catch (Exception $e) {
+                Log::warning('Không thể gửi lại email xác nhận đăng ký', [
+                    'user_id' => $user->id,
+                    'email' => $user->email,
+                    'error' => $e->getMessage(),
+                ]);
+                DB::commit();
+                return back()->with('warning', 'Không thể gửi lại email xác nhận lúc này. Vui lòng thử lại sau.');
+            }
+
             DB::commit();
             return back()->with('status', 'verification-link-sent');
         } catch (Exception $e) {
