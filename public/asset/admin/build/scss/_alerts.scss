@@ -3,50 +3,58 @@
 //
 
 .alert {
-  .icon {
-    margin-right: 10px;
-  }
-
-  .close {
-    color: $black;
-    opacity: .2;
-
-    &:hover {
-      opacity: .5;
+    .icon {
+        margin-right: 10px;
     }
-  }
 
-  a {
-    color: $white;
-    text-decoration: underline;
-  }
+    .close {
+        color: $black;
+        opacity: 0.2;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+
+    a {
+        color: $white;
+        text-decoration: underline;
+    }
 }
 
 //Alert Variants
 @each $color, $value in $theme-colors {
-  .alert-#{$color} {
-    color: color-yiq($value);
-    background-color: $value;
-    border-color: darken($value, 5%);
-  }
-
-  .alert-default-#{$color} {
-    @include alert-variant(theme-color-level($color, $alert-bg-level), theme-color-level($color, $alert-border-level), theme-color-level($color, $alert-color-level));
-  }
-}
-
-@include dark-mode () {
-  @each $color, $value in $theme-colors-alt {
     .alert-#{$color} {
-      color: color-yiq($value);
-      background-color: $value;
-      border-color: darken($value, 5%);
+        color: color-yiq($value);
+        background-color: $value;
+        border-color: darken($value, 5%);
     }
 
     .alert-default-#{$color} {
-      @include alert-variant(theme-color-level($color, $alert-bg-level), theme-color-level($color, $alert-border-level), theme-color-level($color, $alert-color-level));
+        @include alert-variant(
+            theme-color-level($color, $alert-bg-level),
+            theme-color-level($color, $alert-border-level),
+            theme-color-level($color, $alert-color-level)
+        );
     }
-  }
+}
+
+@include dark-mode() {
+    @each $color, $value in $theme-colors-alt {
+        .alert-#{$color} {
+            color: color-yiq($value);
+            background-color: $value;
+            border-color: darken($value, 5%);
+        }
+
+        .alert-default-#{$color} {
+            @include alert-variant(
+                theme-color-level($color, $alert-bg-level),
+                theme-color-level($color, $alert-border-level),
+                theme-color-level($color, $alert-color-level)
+            );
+        }
+    }
 }
 
 //

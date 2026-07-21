@@ -3,9 +3,9 @@
 //
 
 @mixin on-touch-device {
-  @media (hover: none) and (pointer: coarse) {
-    @content;
-  }
+    @media (hover: none) and (pointer: coarse) {
+        @content;
+    }
 }
 
 //
